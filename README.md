@@ -1,2 +1,2 @@
-# Practica7-CompuGrafica
-Previo y Practica 7: Texturizado
+# Practica6-CompuGrafica
+Previo y practica 6: Carga de modelos
