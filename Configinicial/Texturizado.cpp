@@ -151,15 +151,43 @@ int main()
 	int textureWidth, textureHeight,nrChannels;
 	stbi_set_flip_vertically_on_load(true); // Nos coloca en la coordenada (0,0)
 	unsigned char *image;
+
+	// ------ Textura 1 (opaca) ------
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	// Diffuse map
 	// image = stbi_load("images/checker_Tex.png", &textureWidth, &textureHeight, &nrChannels,0); // Imagen de textura
-	image = stbi_load("images/window.png", &textureWidth, &textureHeight, &nrChannels, 0); // Imagen de ventana
+	// image = stbi_load("images/window.png", &textureWidth, &textureHeight, &nrChannels, 0); // Imagen de ventana
+	image = stbi_load("images/ParedLadrillo.jpg", &textureWidth, &textureHeight, &nrChannels, 0); // Imagen de pared de ladrillos
 	glBindTexture(GL_TEXTURE_2D, texture1);
-	// La imagen de la ventana tiene transparencia, por lo que agregamos A (canal alfa) en los RGB
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	if (image)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+	{
+		std::cout << "Failed to load texture" << std::endl;
+	}
+	stbi_image_free(image);
+
+	// ------ Textura 2 (con transparencia) ------
+	GLuint texture2;
+	glGenTextures(1, &texture2);
+	glBindTexture(GL_TEXTURE_2D, texture2);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+	// Diffuse map 2
+	image = stbi_load("images/HojaMaple.png", &textureWidth, &textureHeight, &nrChannels, 0);
+	glBindTexture(GL_TEXTURE_2D, texture2);
+	// La imagen tiene transparencia, por lo que agregamos GL_RGBA
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
 	if (image)
@@ -169,7 +197,7 @@ int main()
 	}
 	else
 	{
-		std::cout << "Failed to load texture" << std::endl;
+		std::cout << "Failed to load texture 2" << std::endl;
 	}
 	stbi_image_free(image);
 
@@ -204,8 +232,14 @@ int main()
 		GLint projLoc = glGetUniformLocation(lampShader.Program, "projection");
 
 		// Bind diffuse map
-		glActiveTexture(GL_TEXTURE0); // Activa el uso de la textura
-		glBindTexture(GL_TEXTURE_2D, texture1); // Asocia el identificar con el tipo de textura
+		glUniform1i(glGetUniformLocation(lampShader.Program, "texture1"), 0);
+		glUniform1i(glGetUniformLocation(lampShader.Program, "texture2"), 1);
+
+		glActiveTexture(GL_TEXTURE0); // Activa el uso de la textura 1
+		glBindTexture(GL_TEXTURE_2D, texture1); // Asocia el identificador con el tipo de textura
+
+		glActiveTexture(GL_TEXTURE1); // Activa el uso de la textura 2
+		glBindTexture(GL_TEXTURE_2D, texture2); // Asocia el identificador con el tipo de textura
 
 		// Set matrices
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
