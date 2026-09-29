@@ -1,6 +1,6 @@
-// Previo #7
+// Práctica #7
 // Serrano Cuevas Ingrid Jazmín
-// Fecha de entrega: 28 de septiembre de 2026
+// Fecha de entrega: 03 de octubre de 2026
 // 319213197
 
 #include <iostream>
@@ -61,7 +61,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Previo 7 - Ingrid Serrano", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 7 - Ingrid Serrano", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
@@ -105,10 +105,10 @@ int main()
 	GLfloat vertices[] =
 	{
 		// Positions            // Colors              // Texture Coords
-		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,
-		0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,
-		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,	    1.0f,1.0f,
-		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,
+		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.1f,0.0f,
+		0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		0.35f,0.0f,
+		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,	    0.35f,0.5f,
+		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.1f,0.5f,
 
 		
 	};
@@ -160,34 +160,9 @@ int main()
 	// Diffuse map
 	// image = stbi_load("images/checker_Tex.png", &textureWidth, &textureHeight, &nrChannels,0); // Imagen de textura
 	// image = stbi_load("images/window.png", &textureWidth, &textureHeight, &nrChannels, 0); // Imagen de ventana
-	image = stbi_load("images/ParedLadrillo.jpg", &textureWidth, &textureHeight, &nrChannels, 0); // Imagen de pared de ladrillos
+	//image = stbi_load("images/ParedLadrillo.jpg", &textureWidth, &textureHeight, &nrChannels, 0); // Imagen de pared de ladrillos
+	image = stbi_load("images/dadoTex.png", &textureWidth, &textureHeight, &nrChannels, 0); // Imagen de dado textura
 	glBindTexture(GL_TEXTURE_2D, texture1);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	if (image)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		std::cout << "Failed to load texture" << std::endl;
-	}
-	stbi_image_free(image);
-
-	// ------ Textura 2 (con transparencia) ------
-	GLuint texture2;
-	glGenTextures(1, &texture2);
-	glBindTexture(GL_TEXTURE_2D, texture2);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-	// Diffuse map 2
-	image = stbi_load("images/HojaMaple.png", &textureWidth, &textureHeight, &nrChannels, 0);
-	glBindTexture(GL_TEXTURE_2D, texture2);
-	// La imagen tiene transparencia, por lo que agregamos GL_RGBA
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
 	if (image)
@@ -197,9 +172,35 @@ int main()
 	}
 	else
 	{
-		std::cout << "Failed to load texture 2" << std::endl;
+		std::cout << "Failed to load texture" << std::endl;
 	}
 	stbi_image_free(image);
+
+	// ------ Textura 2 (con transparencia) ------
+	//GLuint texture2;
+	//glGenTextures(1, &texture2);
+	//glBindTexture(GL_TEXTURE_2D, texture2);
+
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+	//// Diffuse map 2
+	//image = stbi_load("images/HojaMaple.png", &textureWidth, &textureHeight, &nrChannels, 0);
+	//glBindTexture(GL_TEXTURE_2D, texture2);
+	//// La imagen tiene transparencia, por lo que agregamos GL_RGBA
+	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	//glGenerateMipmap(GL_TEXTURE_2D);
+	//if (image)
+	//{
+	//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	//	glGenerateMipmap(GL_TEXTURE_2D);
+	//}
+	//else
+	//{
+	//	std::cout << "Failed to load texture 2" << std::endl;
+	//}
+	//stbi_image_free(image);
 
 	
 
@@ -219,7 +220,7 @@ int main()
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		lampShader.Use(); // Activa el Shader
+		lampShader.Use();
 		//// Create camera transformations
 		glm::mat4 view;
 		view = camera.GetViewMatrix();
@@ -232,21 +233,14 @@ int main()
 		GLint projLoc = glGetUniformLocation(lampShader.Program, "projection");
 
 		// Bind diffuse map
-		glUniform1i(glGetUniformLocation(lampShader.Program, "texture1"), 0);
-		glUniform1i(glGetUniformLocation(lampShader.Program, "texture2"), 1);
-
-		glActiveTexture(GL_TEXTURE0); // Activa el uso de la textura 1
-		glBindTexture(GL_TEXTURE_2D, texture1); // Asocia el identificador con el tipo de textura
-
-		glActiveTexture(GL_TEXTURE1); // Activa el uso de la textura 2
-		glBindTexture(GL_TEXTURE_2D, texture2); // Asocia el identificador con el tipo de textura
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texture1);
 
 		// Set matrices
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		// Draw the light object (using light's vertex attributes)
-		// Dibuja los elementos
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
