@@ -111,13 +111,23 @@ int main()
 		 0.5f,  0.5f,  0.0f,     1.0f, 1.0f, 1.0f,     0.365f, 0.80f,
 		-0.5f,  0.5f,  0.0f,     1.0f, 1.0f, 1.0f,     0.0f, 0.80f, 
 
+		// Positions           // Colors           // Texture Coords
+	-0.5f, -0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   0.365f, 0.5f,
+	 0.5f, -0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   0.73f,  0.5f,
+	 0.5f,  0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   0.73f,  0.80f,
+	-0.5f,  0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   0.365f, 0.80f,
+
 		
 	};
 
 	GLuint indices[] =
 	{  // Note that we start from 0!
-		0,1,3,
-		1,2,3
+	   // Cara frontal (Vértices 0 al 3)
+		0, 1, 3,
+		1, 2, 3,
+	  // Cara trasera (Vértices 4 al 7)
+		4, 5, 7,
+		5, 6, 7
 	
 	};
 
