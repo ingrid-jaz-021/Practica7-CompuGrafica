@@ -1,6 +1,6 @@
 // Práctica #7
 // Serrano Cuevas Ingrid Jazmín
-// Fecha de entrega: 03 de octubre de 2026
+// Fecha de entrega: 02 de octubre de 2026
 // 319213197
 
 #include <iostream>
@@ -104,11 +104,12 @@ int main()
 	// Set up vertex data (and buffer(s)) and attribute pointers
 	GLfloat vertices[] =
 	{
-		// Positions            // Colors              // Texture Coords
-		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.1f,0.0f,
-		0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		0.35f,0.0f,
-		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,	    0.35f,0.5f,
-		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.1f,0.5f,
+		// Positions             // Colors              // Texture Coords
+		// Cara Frontal (Dado con 1)
+		-0.5f, -0.5f,  0.0f,     1.0f, 1.0f, 1.0f,     0.0f, 0.5f, 
+		 0.5f, -0.5f,  0.0f,     1.0f, 1.0f, 1.0f,     0.365f, 0.5f,
+		 0.5f,  0.5f,  0.0f,     1.0f, 1.0f, 1.0f,     0.365f, 0.80f,
+		-0.5f,  0.5f,  0.0f,     1.0f, 1.0f, 1.0f,     0.0f, 0.80f, 
 
 		
 	};
@@ -242,7 +243,7 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		// Draw the light object (using light's vertex attributes)
 		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
 		// Swap the screen buffers
