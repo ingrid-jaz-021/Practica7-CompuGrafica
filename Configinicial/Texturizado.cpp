@@ -1,6 +1,6 @@
 // Práctica #7
 // Serrano Cuevas Ingrid Jazmín
-// Fecha de entrega: 02 de octubre de 2026
+// Fecha de entrega: 03 de octubre de 2026
 // 319213197
 
 #include <iostream>
@@ -106,16 +106,16 @@ int main()
 	{
 		// Positions             // Colors              // Texture Coords
 		// Cara Frontal (Dado con 1)
-		-0.5f, -0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.0f, 0.5f, 
-		 0.5f, -0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.365f, 0.5f,
-		 0.5f,  0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.365f, 0.80f,
-		-0.5f,  0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.0f, 0.80f, 
+		-0.5f, -0.5f,  0.23f,     1.0f, 1.0f, 1.0f,     0.0f, 0.5f, 
+		 0.5f, -0.5f,  0.23f,     1.0f, 1.0f, 1.0f,     0.365f, 0.5f,
+		 0.5f,  0.5f,  0.23f,     1.0f, 1.0f, 1.0f,     0.365f, 0.80f,
+		-0.5f,  0.5f,  0.23f,     1.0f, 1.0f, 1.0f,     0.0f, 0.80f, 
 
-		// Cara Izquierda (Dado 3 - Arriba Der)
-		-0.5f, -0.5f, -0.5f,     1.0f, 1.0f, 1.0f,     0.63f, 0.5f,
-		-0.5f, -0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.96f, 0.5f,
-		-0.5f,  0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.96f, 0.85f,
-		-0.5f,  0.5f, -0.5f,     1.0f, 1.0f, 1.0f,     0.63f, 0.85f,
+		// Cara Izquierda (Dado con 3)
+		-0.1f, -0.5f, -0.5f,     1.0f, 1.0f, 1.0f,     0.63f, 0.5f,
+		-0.1f, -0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.96f, 0.5f,
+		-0.1f,  0.65f,  0.5f,     1.0f, 1.0f, 1.0f,     0.96f, 0.85f,
+		-0.1f,  0.65f, -0.5f,     1.0f, 1.0f, 1.0f,     0.63f, 0.85f,
 
 		
 	};
