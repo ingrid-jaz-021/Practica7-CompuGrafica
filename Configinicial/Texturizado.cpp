@@ -106,29 +106,41 @@ int main()
 	{
 		// Positions             // Colors              // Texture Coords
 		// Cara Frontal (Dado con 1)
-		-0.5f, -0.5f,  0.0f,     1.0f, 1.0f, 1.0f,     0.0f, 0.5f, 
-		 0.5f, -0.5f,  0.0f,     1.0f, 1.0f, 1.0f,     0.365f, 0.5f,
-		 0.5f,  0.5f,  0.0f,     1.0f, 1.0f, 1.0f,     0.365f, 0.80f,
-		-0.5f,  0.5f,  0.0f,     1.0f, 1.0f, 1.0f,     0.0f, 0.80f, 
+		-0.5f, -0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.0f, 0.5f, 
+		 0.5f, -0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.365f, 0.5f,
+		 0.5f,  0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.365f, 0.80f,
+		-0.5f,  0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.0f, 0.80f, 
 
-		// Positions           // Colors           // Texture Coords
-	-0.5f, -0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   0.365f, 0.5f,
-	 0.5f, -0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   0.73f,  0.5f,
-	 0.5f,  0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   0.73f,  0.80f,
-	-0.5f,  0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   0.365f, 0.80f,
+		// Cara Izquierda (Dado 3 - Arriba Der)
+		-0.5f, -0.5f, -0.5f,     1.0f, 1.0f, 1.0f,     0.63f, 0.5f,
+		-0.5f, -0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.96f, 0.5f,
+		-0.5f,  0.5f,  0.5f,     1.0f, 1.0f, 1.0f,     0.96f, 0.85f,
+		-0.5f,  0.5f, -0.5f,     1.0f, 1.0f, 1.0f,     0.63f, 0.85f,
 
 		
 	};
 
 	GLuint indices[] =
 	{  // Note that we start from 0!
-	   // Cara frontal (Vértices 0 al 3)
+	   // Cara frontal
 		0, 1, 3,
 		1, 2, 3,
-	  // Cara trasera (Vértices 4 al 7)
+	   // Cara trasera 
 		4, 5, 7,
-		5, 6, 7
-	
+		5, 6, 7,
+	   // Cara Izquierda
+		8, 9, 11,   
+		9, 10, 11,
+		// Cara Derecha
+		12, 13, 15, 
+		13, 14, 15,    
+		// Cara Inferior
+		16, 17, 19, 
+		17, 18, 19,   
+		// Cara Superior
+		20, 21, 23, 
+		21, 22, 23     
+
 	};
 
 	// First, set the container's VAO (and VBO)
